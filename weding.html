@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#070309">
+
+<title>Mahesh Babu ❤️ Namrata | Wedding Anniversary</title>
+
+<!-- =========================================================
+ HOW TO CUSTOMIZE THIS WEBSITE
+
+ 1. MAHESH PHOTO:
+    Change CONFIG.maheshPhoto
+
+ 2. NAMRATA PHOTO:
+    Change CONFIG.namrataPhoto
+
+ 3. YOUR OWN WEDDING PHOTOS:
+    Put them inside an "images" folder:
+       images/wedding.jpg
+       images/memory1.jpg
+       images/memory2.jpg
+       etc.
+
+ 4. ANNIVERSARY DATE:
+    Change:
+       anniversaryMonth: 2
+       anniversaryDay: 10
+
+ 5. LOCATION:
+    Change:
+       locationName
+       locationQuery
+
+ 6. MUSIC:
+    This website has an ORIGINAL JavaScript celebration melody.
+    It starts only after pressing Play.
+
+    If you have your own legal MP3, change:
+       musicFile: "music/anniversary.mp3"
+
+ 7. EVERYTHING IS INSIDE THIS ONE HTML FILE.
+========================================================= -->
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070309;
+    color:#fff;
+    font-family:Georgia,"Times New Roman",serif;
+    overflow-x:hidden;
+}
+
+:root{
+    --gold:#f5d477;
+    --gold2:#b8791c;
+    --cream:#fff0c2;
+    --wine:#5d102e;
+    --maroon:#260714;
+    --purple:#17071c;
+    --black:#050208;
+    --text:#d9cbb0;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* =========================================================
+   GOLD TEXT
+========================================================= */
+
+.gold{
+    background:linear-gradient(
+        90deg,
+        #9d6817,
+        #fff0a7,
+        #d49a2c,
+        #fff4bd,
+        #a66d17
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+/* =========================================================
+   OPENING SCREEN
+========================================================= */
+
+#opening{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(220,160,45,.16),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at bottom,
+            rgba(120,10,50,.45),
+            transparent 50%
+        ),
+        #030105;
+
+    transition:1.2s ease;
+}
+
+#opening.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.opening-content{
+    width:min(850px,90%);
+    position:relative;
+}
+
+.crown{
+    font-size:60px;
+    color:var(--gold);
+    text-shadow:
+        0 0 20px #ffd96a,
+        0 0 50px rgba(255,180,40,.4);
+    animation:float 3s infinite;
+}
+
+.open-small{
+    margin:15px 0;
+    font:11px Arial,sans-serif;
+    letter-spacing:5px;
+    color:#d6c28d;
+}
+
+.open-title{
+    font-size:clamp(2.5rem,7vw,6rem);
+    line-height:.95;
+}
+
+.open-names{
+    font-size:clamp(1.5rem,4vw,3rem);
+    margin:25px 0;
+}
+
+.diya{
+    width:90px;
+    height:45px;
+    margin:25px auto 35px;
+    border-radius:50%;
+    background:linear-gradient(#b46d21,#4c170d);
+    border:1px solid var(--gold);
+    position:relative;
+}
+
+.diya:before{
+    content:"";
+    position:absolute;
+    width:25px;
+    height:60px;
+    left:32px;
+    top:-55px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #fffbd0 0 10%,
+            #ffd35d 25%,
+            #ff6c20 50%,
+            transparent 72%
+        );
+
+    filter:blur(1px);
+    animation:flame 1s infinite alternate;
+}
+
+.enter{
+    border:1px solid var(--gold);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(210,150,40,.35),
+            rgba(100,10,45,.45)
+        );
+    color:white;
+    padding:16px 30px;
+    border-radius:100px;
+    cursor:pointer;
+    box-shadow:
+        0 0 30px rgba(245,210,119,.15);
+    transition:.4s;
+}
+
+.enter:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:
+        0 15px 50px rgba(245,210,119,.25);
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particles,
+.petals{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.spark{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#ffe7a1;
+    box-shadow:0 0 15px #ffd75e;
+    animation:rise linear infinite;
+}
+
+.petal{
+    position:absolute;
+    width:10px;
+    height:18px;
+    border-radius:80% 20% 80% 20%;
+    background:linear-gradient(
+        135deg,
+        #8d123c,
+        #f26a81
+    );
+    opacity:.65;
+    animation:rise linear infinite;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2000;
+
+    width:min(1100px,94%);
+
+    border:1px solid rgba(245,212,119,.35);
+    border-radius:100px;
+
+    background:rgba(7,2,8,.72);
+    backdrop-filter:blur(20px);
+
+    box-shadow:0 15px 50px rgba(0,0,0,.4);
+}
+
+.nav-inner{
+    padding:10px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    color:var(--gold);
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.links{
+    display:flex;
+    gap:4px;
+}
+
+.links a{
+    font:11px Arial,sans-serif;
+    padding:10px 12px;
+    border-radius:30px;
+    color:#e8d7b3;
+    transition:.3s;
+}
+
+.links a:hover{
+    background:rgba(245,212,119,.1);
+    color:white;
+}
+
+.menu{
+    display:none;
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    padding:130px 0 80px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 75%,
+            rgba(130,12,55,.35),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(120,20,80,.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #050207,
+            #180715,
+            #09030b
+        );
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 70px,
+            rgba(245,212,119,.018) 71px 72px
+        );
+
+    pointer-events:none;
+}
+
+.mandap{
+    position:absolute;
+    top:100px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(900px,90%);
+    height:170px;
+
+    border:1px solid rgba(245,212,119,.3);
+    border-bottom:0;
+
+    border-radius:500px 500px 0 0;
+
+    box-shadow:
+        0 -20px 80px rgba(245,190,70,.08);
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    width:100%;
+}
+
+.kicker{
+    font:11px Arial,sans-serif;
+    letter-spacing:6px;
+    color:#dbc998;
+}
+
+.hero h1{
+    font-size:clamp(2.8rem,7vw,7rem);
+    line-height:.9;
+    margin:18px 0;
+}
+
+.hero-sub{
+    color:#eee0bd;
+    font-size:clamp(1rem,2.5vw,1.8rem);
+    font-style:italic;
+}
+
+.divider{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin:28px 0;
+}
+
+.divider span{
+    width:90px;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold)
+    );
+}
+
+.couple{
+    width:min(950px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 110px 1fr;
+    gap:20px;
+    align-items:center;
+}
+
+.photo-frame{
+    min-height:430px;
+    padding:8px;
+
+    border-radius:
+        180px 180px 20px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5b17,
+            #ffe9a0,
+            #b97c20,
+            #4b2607
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        0 0 45px rgba(245,212,119,.12);
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+    min-height:414px;
+    object-fit:cover;
+
+    border-radius:
+        174px 174px 13px 13px;
+
+    display:block;
+}
+
+.photo-label{
+    margin-top:-55px;
+    position:relative;
+    z-index:5;
+
+    display:inline-block;
+
+    padding:10px 22px;
+    border-radius:100px;
+
+    background:rgba(5,2,6,.8);
+    border:1px solid rgba(245,212,119,.5);
+
+    color:#fff0c5;
+}
+
+.heart-center{
+    width:100px;
+    height:100px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:#10050e;
+    border:1px solid var(--gold);
+
+    color:#ffd978;
+    font-size:45px;
+
+    box-shadow:
+        0 0 50px rgba(245,210,119,.15),
+        inset 0 0 30px rgba(245,210,119,.06);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    position:relative;
+    padding:110px 0;
+    overflow:hidden;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.eyebrow{
+    font:700 11px Arial,sans-serif;
+    letter-spacing:4px;
+    color:var(--gold);
+    text-transform:uppercase;
+}
+
+.section-title{
+    font-size:clamp(2.2rem,5vw,4.5rem);
+    margin:15px 0;
+}
+
+.line{
+    width:110px;
+    height:2px;
+    margin:20px auto;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.section-text{
+    max-width:700px;
+    margin:auto;
+    color:var(--text);
+    line-height:1.8;
+}
+
+/* =========================================================
+   FESTIVAL CARDS
+========================================================= */
+
+#celebration{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(90,12,40,.2),
+            transparent 50%
+        ),
+        #08030a;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    min-height:390px;
+    border:1px solid rgba(245,212,119,.3);
+    border-radius:25px;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.02)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.5);
+
+    transition:.45s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,220,130,.75);
+}
+
+.card-image{
+    height:230px;
+    position:relative;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.card-image:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(8,2,8,.9)
+        );
+}
+
+.card-body{
+    padding:22px;
+}
+
+.card-number{
+    font:10px Arial,sans-serif;
+    letter-spacing:3px;
+    color:var(--gold);
+}
+
+.card h3{
+    font-size:1.7rem;
+    margin:7px 0;
+}
+
+.card p{
+    color:#cdbfa7;
+    line-height:1.7;
+}
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown-section{
+    background:
+        radial-gradient(
+            circle,
+            rgba(130,15,55,.25),
+            transparent 55%
+        ),
+        #10040d;
+}
+
+.countdown{
+    width:min(900px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.time{
+    padding:30px 10px;
+    text-align:center;
+
+    border:1px solid rgba(245,212,119,.3);
+    border-radius:20px;
+
+    background:rgba(255,255,255,.035);
+}
+
+.number{
+    color:#ffe4a0;
+    font-size:clamp(2.2rem,5vw,4rem);
+    font-weight:bold;
+}
+
+.label{
+    font:700 10px Arial,sans-serif;
+    letter-spacing:3px;
+    color:#a9997f;
+}
+
+/* =========================================================
+   LOVE MESSAGE
+========================================================= */
+
+.love{
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(245,190,70,.1),
+            transparent 25%
+        ),
+        linear-gradient(
+            #13050f,
+            #070309
+        );
+}
+
+.love-box{
+    max-width:950px;
+    margin:auto;
+    padding:70px 9%;
+
+    text-align:center;
+
+    border:1px solid rgba(245,212,119,.3);
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.05),
+            rgba(100,10,45,.1)
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.5);
+}
+
+.quote{
+    font-size:clamp(1.8rem,4vw,3.5rem);
+    line-height:1.25;
+    font-style:italic;
+}
+
+.love-text{
+    margin-top:25px;
+    color:#d6c7ad;
+    line-height:2;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    columns:4 230px;
+    column-gap:15px;
+}
+
+.gallery-item{
+    break-inside:avoid;
+    margin-bottom:15px;
+    overflow:hidden;
+    cursor:pointer;
+
+    border:1px solid rgba(245,212,119,.3);
+    border-radius:16px;
+
+    background:#170711;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+    filter:brightness(1.1);
+}
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.map{
+    min-height:360px;
+    position:relative;
+    overflow:hidden;
+
+    border-radius:30px;
+    border:1px solid rgba(245,212,119,.3);
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 48px,
+            rgba(245,212,119,.12) 49px 50px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 48px,
+            rgba(245,212,119,.12) 49px 50px
+        ),
+        #10070e;
+}
+
+.map:after{
+    content:"";
+    position:absolute;
+    width:150%;
+    height:3px;
+    left:-25%;
+    top:55%;
+    background:rgba(245,212,119,.25);
+    transform:rotate(-25deg);
+}
+
+.pin{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:70px;
+    filter:drop-shadow(0 0 20px #e7b53f);
+    z-index:3;
+}
+
+.location-info{
+    padding:40px;
+    border-radius:30px;
+
+    border:1px solid rgba(245,212,119,.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.05),
+            rgba(100,10,45,.12)
+        );
+}
+
+.location-name{
+    font-size:clamp(2rem,4vw,3.5rem);
+    margin:15px 0;
+}
+
+.location-info p{
+    color:#d0c0a5;
+    line-height:1.8;
+}
+
+.btns{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.gold-btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:100px;
+
+    border:1px solid var(--gold);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(200,140,35,.3),
+            rgba(90,10,45,.3)
+        );
+
+    color:white;
+    transition:.3s;
+}
+
+.gold-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(245,212,119,.15);
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:3000;
+
+    width:min(350px,calc(100% - 36px));
+
+    padding:15px;
+
+    border:1px solid rgba(245,212,119,.3);
+    border-radius:20px;
+
+    background:rgba(10,3,10,.9);
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.music-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.disc{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        conic-gradient(
+            #f5d477,
+            #631238,
+            #f5d477
+        );
+
+    animation:spin 4s linear infinite;
+}
+
+.disc.pause{
+    animation-play-state:paused;
+}
+
+.music-title{
+    font-weight:bold;
+}
+
+.music-status{
+    font:10px Arial,sans-serif;
+    color:#a99b82;
+    margin-top:4px;
+}
+
+.music-controls{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-top:12px;
+}
+
+.music-btn{
+    border:1px solid rgba(245,212,119,.3);
+    background:rgba(255,255,255,.05);
+    color:white;
+    padding:8px 11px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#volume{
+    width:100%;
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+#lightbox{
+    position:fixed;
+    inset:0;
+    z-index:9998;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.94);
+}
+
+#lightbox.show{
+    display:flex;
+}
+
+.lb-img{
+    max-width:90%;
+    max-height:85%;
+    border:1px solid var(--gold);
+    box-shadow:0 0 70px rgba(245,212,119,.15);
+}
+
+.lb-btn{
+    position:absolute;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+    border:1px solid rgba(245,212,119,.4);
+
+    background:#170711;
+    color:white;
+
+    font-size:30px;
+    cursor:pointer;
+}
+
+.lb-close{
+    top:20px;
+    right:20px;
+}
+
+.lb-prev{
+    left:20px;
+}
+
+.lb-next{
+    right:20px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    position:relative;
+    padding:110px 20px 160px;
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center bottom,
+            rgba(160,80,20,.2),
+            transparent 40%
+        ),
+        #030105;
+}
+
+.final{
+    font-size:clamp(2rem,5vw,4.5rem);
+    line-height:1.15;
+}
+
+.final-names{
+    font-size:clamp(1.5rem,3.5vw,2.8rem);
+    margin:25px 0;
+}
+
+.footer-text{
+    color:#aa9c82;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes rise{
+
+    0%{
+        transform:
+            translateY(110vh)
+            translateX(0)
+            rotate(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:
+            translateY(-15vh)
+            translateX(var(--move))
+            rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes float{
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes flame{
+
+    to{
+        transform:
+            scale(1.12)
+            translateY(-3px);
+    }
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .couple{
+        grid-template-columns:1fr 70px 1fr;
+    }
+
+    .heart-center{
+        width:65px;
+        height:65px;
+        font-size:28px;
+    }
+
+    .photo-frame{
+        min-height:350px;
+    }
+
+    .photo-frame img{
+        min-height:334px;
+    }
+
+    .location{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .nav{
+        top:8px;
+    }
+
+    .links{
+        display:none;
+
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+
+        padding:10px;
+
+        flex-direction:column;
+
+        border:1px solid rgba(245,212,119,.3);
+        border-radius:20px;
+
+        background:#0c040d;
+    }
+
+    .links.open{
+        display:flex;
+    }
+
+    .links a{
+        text-align:center;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .couple{
+        grid-template-columns:1fr;
+    }
+
+    .heart-center{
+        margin:auto;
+    }
+
+    .photo-frame{
+        width:min(320px,90%);
+        margin:auto;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:85px 0;
+    }
+
+    .music{
+        bottom:10px;
+        right:10px;
+        width:calc(100% - 20px);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+ OPENING
+========================================================= -->
+
+<div id="opening">
+
+    <div class="particles" id="openingParticles"></div>
+
+    <div class="opening-content">
+
+        <div class="crown">♕</div>
+
+        <div class="open-small">
+            A ROYAL CELEBRATION OF LOVE
+        </div>
+
+        <div class="diya"></div>
+
+        <div class="open-title gold">
+            Once Upon a<br>
+            Beautiful Love Story...
+        </div>
+
+        <div class="open-names">
+            Mahesh Babu ❤️ Namrata Shirodkar
+        </div>
+
+        <button class="enter" id="enter">
+            ✨ Enter Celebration ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+ NAVIGATION
+========================================================= -->
+
+<nav class="nav">
+
+    <div class="nav-inner">
+
+        <a href="#home" class="logo">
+            MB ❤️ NS
+        </a>
+
+        <button class="menu" id="menu">
+            ☰
+        </button>
+
+        <div class="links" id="links">
+
+            <a href="#home">❤️ Home</a>
+            <a href="#celebration">🌸 Celebration</a>
+            <a href="#wedding">💍 Wedding</a>
+            <a href="#memories">📸 Memories</a>
+            <a href="#location">📍 Location</a>
+            <a href="#message">❤️ Message</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+ HERO
+========================================================= -->
+
+<header class="hero" id="home">
+
+    <div class="particles" id="heroParticles"></div>
+    <div class="petals" id="heroPetals"></div>
+
+    <div class="mandap"></div>
+
+    <div class="container hero-content">
+
+        <div class="kicker">
+            ROYAL WEDDING ANNIVERSARY
+        </div>
+
+        <h1 class="gold">
+            Happy Wedding<br>
+            Anniversary
+        </h1>
+
+        <div class="hero-sub">
+            Celebrating Love, Togetherness & Forever
+        </div>
+
+        <div class="divider">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+
+        <div class="couple">
+
+            <div class="photo-frame">
+
+                <img
+                    id="mahesh"
+                    alt="Mahesh Babu"
+                >
+
+                <div class="photo-label">
+                    Mahesh Babu
+                </div>
+
+            </div>
+
+
+            <div class="heart-center">
+                ❤️
+            </div>
+
+
+            <div class="photo-frame">
+
+                <img
+                    id="namrata"
+                    alt="Namrata Shirodkar"
+                >
+
+                <div class="photo-label">
+                    Namrata Shirodkar
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+ FESTIVAL
+========================================================= -->
+
+<section id="celebration">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+A GRAND INDIAN CELEBRATION
+</div>
+
+<h2 class="section-title gold">
+Our Wedding Anniversary Festival
+</h2>
+
+<div class="line"></div>
+
+<p class="section-text">
+Six beautiful chapters inspired by Indian wedding traditions,
+flowers, music, lights and unforgettable memories.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-image">
+<img id="haldi">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 01
+</div>
+
+<h3>
+🌼 Haldi Ceremony
+</h3>
+
+<p>
+Sunshine yellow, marigold flowers and the joy
+of beginning a beautiful celebration.
+</p>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<div class="card-image">
+<img id="mehendi">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 02
+</div>
+
+<h3>
+🌿 Mehendi Ceremony
+</h3>
+
+<p>
+Green and gold elegance with traditional patterns,
+flowers and timeless Indian artistry.
+</p>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<div class="card-image">
+<img id="sangeet">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 03
+</div>
+
+<h3>
+🎶 Sangeet Night
+</h3>
+
+<p>
+Music, lights and celebration where every beat
+becomes another beautiful memory.
+</p>
+
+</div>
+</div>
+
+
+
+<div class="card" id="wedding">
+
+<div class="card-image">
+<img id="weddingPhoto">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 04
+</div>
+
+<h3>
+💍 Wedding Ceremony
+</h3>
+
+<p>
+A grand mandap, golden lamps and the promise
+of a lifetime together.
+</p>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<div class="card-image">
+<img id="reception">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 05
+</div>
+
+<h3>
+👑 Reception
+</h3>
+
+<p>
+Crystal lights, elegant smiles and a celebration
+worthy of a timeless love story.
+</p>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<div class="card-image">
+<img id="anniversary">
+</div>
+
+<div class="card-body">
+
+<div class="card-number">
+CHAPTER 06
+</div>
+
+<h3>
+❤️ Anniversary Celebration
+</h3>
+
+<p>
+Roses, candles, golden lights and another
+beautiful page in a forever story.
+</p>
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ COUNTDOWN
+========================================================= -->
+
+<section class="countdown-section">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+EVERY SECOND IS PRECIOUS
+</div>
+
+<h2 class="section-title gold">
+Counting Every Beautiful Moment
+</h2>
+
+<div class="line"></div>
+
+<p class="section-text">
+Counting down to the next February 10 anniversary celebration.
+</p>
+
+</div>
+
+
+<div class="countdown">
+
+<div class="time">
+<div class="number" id="days">00</div>
+<div class="label">DAYS</div>
+</div>
+
+<div class="time">
+<div class="number" id="hours">00</div>
+<div class="label">HOURS</div>
+</div>
+
+<div class="time">
+<div class="number" id="minutes">00</div>
+<div class="label">MINUTES</div>
+</div>
+
+<div class="time">
+<div class="number" id="seconds">00</div>
+<div class="label">SECONDS</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ LOVE MESSAGE
+========================================================= -->
+
+<section class="love" id="message">
+
+<div class="container">
+
+<div class="love-box">
+
+<div class="eyebrow">
+TWO HEARTS • ONE BEAUTIFUL JOURNEY
+</div>
+
+<div class="line"></div>
+
+<div class="quote gold">
+“The most beautiful memories are the ones we create together.”
+</div>
+
+<p class="love-text">
+
+Love is not only about grand moments.
+
+It is about trust in quiet days,
+laughter in ordinary moments,
+standing together through every season,
+and turning years of companionship into
+a lifetime of memories.
+
+Here is to family, friendship,
+togetherness and every beautiful chapter
+still waiting to be written.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ MEMORIES
+========================================================= -->
+
+<section id="memories">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+FRAMES FROM A BEAUTIFUL STORY
+</div>
+
+<h2 class="section-title gold">
+Beautiful Memories
+</h2>
+
+<div class="line"></div>
+
+<p class="section-text">
+Tap any photograph for fullscreen cinematic view.
+Replace the image paths in CONFIG.gallery with your own photos.
+</p>
+
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ LOCATION
+========================================================= -->
+
+<section id="location">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+THE ROYAL CELEBRATION VENUE
+</div>
+
+<h2 class="section-title gold">
+A Celebration In Hyderabad
+</h2>
+
+<div class="line"></div>
+
+<p class="section-text">
+This is presented as a Celebration Location only,
+not as a claim about a private venue.
+</p>
+
+</div>
+
+
+<div class="location">
+
+
+<div class="map">
+
+<div class="pin">
+📍
+</div>
+
+</div>
+
+
+<div class="location-info">
+
+<div class="eyebrow">
+CELEBRATION LOCATION
+</div>
+
+<div class="location-name gold" id="locationName">
+Hyderabad, Telangana
+</div>
+
+<p>
+A city of palaces, traditions, lights and
+unforgettable celebrations.
+
+Let this location represent the royal setting
+of this digital anniversary invitation.
+</p>
+
+<div class="btns">
+
+<a
+class="gold-btn"
+id="mapBtn"
+target="_blank"
+>
+📍 View Location
+</a>
+
+<a
+class="gold-btn"
+id="directionBtn"
+target="_blank"
+>
+🧭 Get Directions
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="petals" id="footerPetals"></div>
+
+<div class="container">
+
+<div class="eyebrow">
+A FOREVER WORTH CELEBRATING
+</div>
+
+<div class="line"></div>
+
+<div class="final gold">
+Some journeys are beautiful,<br>
+but a journey together is priceless.
+</div>
+
+<div class="final-names">
+
+Happy Wedding Anniversary
+
+<br>
+
+<span class="gold">
+Mahesh Babu ❤️ Namrata Shirodkar
+</span>
+
+</div>
+
+<div class="footer-text">
+With Love, Memories & Endless Happiness ✨
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+ MUSIC PLAYER
+========================================================= -->
+
+<div class="music">
+
+<div class="music-top">
+
+<div class="disc" id="disc">
+♫
+</div>
+
+<div>
+
+<div class="music-title">
+🎵 Royal Celebration Melody
+</div>
+
+<div
+class="music-status"
+id="musicStatus"
+>
+Tap Play to begin the celebration
+</div>
+
+</div>
+
+</div>
+
+
+<div class="music-controls">
+
+<button
+class="music-btn"
+id="play"
+>
+▶ Play
+</button>
+
+<button
+class="music-btn"
+id="mute"
+>
+🔊
+</button>
+
+<input
+type="range"
+id="volume"
+min="0"
+max="1"
+step=".01"
+value=".55"
+>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+ LIGHTBOX
+========================================================= -->
+
+<div id="lightbox">
+
+<button
+class="lb-btn lb-close"
+id="closeLightbox"
+>
+×
+</button>
+
+<button
+class="lb-btn lb-prev"
+id="previous"
+>
+‹
+</button>
+
+<img
+class="lb-img"
+id="lightboxImage"
+>
+
+<button
+class="lb-btn lb-next"
+id="next"
+>
+›
+</button>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+ CONFIGURATION
+========================================================= */
+
+const CONFIG={
+
+    maheshPhoto:
+    "https://filmfare.wwmindia.com/content/2020/sep/maheshbabu11599714225.jpg",
+
+    namrataPhoto:
+    "https://www.deccanchronicle.com/h-upload/2024/11/01/1858316-namratashirodkar.webp",
+
+    anniversaryMonth:2,
+
+    anniversaryDay:10,
+
+    locationName:
+    "Hyderabad, Telangana",
+
+    locationQuery:
+    "Hyderabad, Telangana, India",
+
+    gallery:[
+
+        ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThO9amyXhmVKvKSgVJqQ0COvkg5xkfee9UOfpBLDHffk8reYxDLrMjD86t&s=10","Beautiful Beginning"],
+        ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkh-hQdyYayjodrBFwa5346-XenNdj2n2tG9110tSsUnqKkttv-gAyW7BX&s=10","Together"],
+        ["https://www.bollywoodshaadis.com/img/article-2017113145143118871000.jpg","Golden Memories"],
+        ["https://images.assettype.com/nationalherald/2020-02/400cbf82-524f-4499-9888-ce46c777a14d/mahesh_babu3_1502256.webp","Celebration"],
+        ["https://images.assettype.com/nationalherald/2020-02/400cbf82-524f-4499-9888-ce46c777a14d/mahesh_babu3_1502256.webp","Forever"],
+        ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPPCtihLM18oKnY9F4RBD-rCHr6iYX3vBMFExzLQ1bXu65rnev0we8iVgs&s=10","Family & Love"],
+        ["https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-92bdcdkr14ttq2bgb9fq6ue2u4-20180122102649.Medi.jpeg","Another Chapter"],
+        ["https://staticprintenglish.theprint.in/wp-content/uploads/2024/01/ANI-20240122123223.jpg","Beautiful Moments"],
+        ["https://staticprintenglish.theprint.in/wp-content/uploads/2024/01/ANI-20240122123223.jpg","Love & Laughter"],
+        ["https://www.thestatesman.com/wp-content/uploads/2020/02/cxfbb.jpg","Royal Evening"],
+        ["https://akm-img-a-in.tosshub.com/indiatoday/images/photogallery/201808/Mahesh_Babu_5_IT_1535620942455.jpg?VersionId=S5Qm4yid8sWuddOUfHgfTVFxxIb6URbS&size=686:*","Together Always"],
+        ["https://dc-cdn.s3-ap-southeast-1.amazonaws.com/dc-Cover-906m1npl6g1jjq21ckk53o8kq7-20160312225449.Medi.jpeg","Forever To Go"]
+
+    ],
+
+    /*
+      Leave empty for built-in original melody.
+
+      Or use:
+      "music/anniversary.mp3"
+    */
+    musicFile:""
+
+};
+
+
+/* =========================================================
+ IMAGE FALLBACK
+========================================================= */
+
+const fallback1=CONFIG.maheshPhoto;
+const fallback2=CONFIG.namrataPhoto;
+
+function loadImage(element,url,fallback){
+
+    element.src=url;
+
+    element.onerror=function(){
+
+        this.onerror=null;
+        this.src=fallback;
+
+    };
+
+}
+
+loadImage(
+    document.getElementById("mahesh"),
+    CONFIG.maheshPhoto,
+    fallback1
+);
+
+loadImage(
+    document.getElementById("namrata"),
+    CONFIG.namrataPhoto,
+    fallback2
+);
+
+
+/* FESTIVAL IMAGES */
+
+loadImage(
+    document.getElementById("haldi"),
+    "images/haldi.jpg",
+    fallback2
+);
+
+loadImage(
+    document.getElementById("mehendi"),
+    "images/mehendi.jpg",
+    fallback2
+);
+
+loadImage(
+    document.getElementById("sangeet"),
+    "images/sangeet.jpg",
+    fallback1
+);
+
+loadImage(
+    document.getElementById("weddingPhoto"),
+    "images/wedding.jpg",
+    fallback1
+);
+
+loadImage(
+    document.getElementById("reception"),
+    "images/reception.jpg",
+    fallback2
+);
+
+loadImage(
+    document.getElementById("anniversary"),
+    "images/anniversary.jpg",
+    fallback1
+);
+
+
+/* =========================================================
+ PARTICLES
+========================================================= */
+
+function particles(id,count,type){
+
+    const parent=document.getElementById(id);
+
+    for(let i=0;i<count;i++){
+
+        const element=document.createElement("span");
+
+        element.className=type;
+
+        element.style.left=
+            Math.random()*100+"%";
+
+        element.style.setProperty(
+            "--move",
+            ((Math.random()-.5)*250)+"px"
+        );
+
+        element.style.animationDuration=
+            (7+Math.random()*10)+"s";
+
+        element.style.animationDelay=
+            (-Math.random()*15)+"s";
+
+        parent.appendChild(element);
+
+    }
+
+}
+
+particles(
+    "openingParticles",
+    60,
+    "spark"
+);
+
+particles(
+    "heroParticles",
+    45,
+    "spark"
+);
+
+particles(
+    "heroPetals",
+    25,
+    "petal"
+);
+
+particles(
+    "footerPetals",
+    18,
+    "petal"
+);
+
+
+/* =========================================================
+ OPEN WEBSITE
+========================================================= */
+
+document
+.getElementById("enter")
+.addEventListener(
+    "click",
+    function(){
+
+        document
+        .getElementById("opening")
+        .classList
+        .add("hide");
+
+    }
+);
+
+
+/* =========================================================
+ MOBILE MENU
+========================================================= */
+
+const menu=
+document.getElementById("menu");
+
+const links=
+document.getElementById("links");
+
+menu.onclick=function(){
+
+    links.classList.toggle("open");
+
+};
+
+links
+.querySelectorAll("a")
+.forEach(function(link){
+
+    link.onclick=function(){
+
+        links.classList.remove("open");
+
+    };
+
+});
+
+
+/* =========================================================
+ COUNTDOWN
+========================================================= */
+
+function nextAnniversary(){
+
+    const now=new Date();
+
+    let year=
+        now.getFullYear();
+
+    let target=
+        new Date(
+            year,
+            CONFIG.anniversaryMonth-1,
+            CONFIG.anniversaryDay,
+            0,0,0
+        );
+
+    if(target<=now){
+
+        target=
+            new Date(
+                year+1,
+                CONFIG.anniversaryMonth-1,
+                CONFIG.anniversaryDay,
+                0,0,0
+            );
+
+    }
+
+    return target;
+
+}
+
+let target=
+nextAnniversary();
+
+
+function updateCountdown(){
+
+    const now=
+        new Date();
+
+    let difference=
+        Math.max(
+            0,
+            target-now
+        );
+
+    let days=
+        Math.floor(
+            difference/86400000
+        );
+
+    let hours=
+        Math.floor(
+            difference%86400000/3600000
+        );
+
+    let minutes=
+        Math.floor(
+            difference%3600000/60000
+        );
+
+    let seconds=
+        Math.floor(
+            difference%60000/1000
+        );
+
+    document
+    .getElementById("days")
+    .textContent=
+        String(days).padStart(2,"0");
+
+    document
+    .getElementById("hours")
+    .textContent=
+        String(hours).padStart(2,"0");
+
+    document
+    .getElementById("minutes")
+    .textContent=
+        String(minutes).padStart(2,"0");
+
+    document
+    .getElementById("seconds")
+    .textContent=
+        String(seconds).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================================
+ LOCATION BUTTONS
+========================================================= */
+
+document
+.getElementById("locationName")
+.textContent=
+CONFIG.locationName;
+
+const query=
+encodeURIComponent(
+    CONFIG.locationQuery
+);
+
+document
+.getElementById("mapBtn")
+.href=
+"https://www.google.com/maps/search/?api=1&query="
++query;
+
+document
+.getElementById("directionBtn")
+.href=
+"https://www.google.com/maps/dir/?api=1&destination="
++query;
+
+
+/* =========================================================
+ GALLERY
+========================================================= */
+
+const gallery=
+document.getElementById("gallery");
+
+let galleryImages=[];
+
+CONFIG.gallery.forEach(
+function(item,index){
+
+    const box=
+        document.createElement("div");
+
+    box.className=
+        "gallery-item";
+
+    const image=
+        document.createElement("img");
+
+    image.alt=item[1];
+
+    loadImage(
+        image,
+        item[0],
+        index%2===0?
+            fallback1:
+            fallback2
+    );
+
+    box.appendChild(image);
+
+    gallery.appendChild(box);
+
+    galleryImages.push(image);
+
+    box.onclick=function(){
+
+        openLightbox(index);
+
+    };
+
+});
+
+
+/* =========================================================
+ LIGHTBOX
+========================================================= */
+
+let currentImage=0;
+
+const lightbox=
+document.getElementById("lightbox");
+
+const lightboxImage=
+document.getElementById("lightboxImage");
+
+
+function openLightbox(index){
+
+    currentImage=index;
+
+    lightboxImage.src=
+        galleryImages[index].src;
+
+    lightbox.classList.add("show");
+
+    document.body.style.overflow="hidden";
+
+}
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove("show");
+
+    document.body.style.overflow="";
+
+}
+
+
+function moveLightbox(direction){
+
+    currentImage=
+        (
+            currentImage+
+            direction+
+            galleryImages.length
+        )
+        %
+        galleryImages.length;
+
+    openLightbox(currentImage);
+
+}
+
+
+document
+.getElementById("closeLightbox")
+.onclick=
+closeLightbox;
+
+
+document
+.getElementById("previous")
+.onclick=
+function(){
+
+    moveLightbox(-1);
+
+};
+
+
+document
+.getElementById("next")
+.onclick=
+function(){
+
+    moveLightbox(1);
+
+};
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            !lightbox.classList.contains("show")
+        ){
+            return;
+        }
+
+        if(event.key==="Escape"){
+            closeLightbox();
+        }
+
+        if(event.key==="ArrowLeft"){
+            moveLightbox(-1);
+        }
+
+        if(event.key==="ArrowRight"){
+            moveLightbox(1);
+        }
+
+    }
+);
+
+
+/* =========================================================
+ ORIGINAL MUSIC ENGINE
+========================================================= */
+
+let audioContext=null;
+let masterGain=null;
+let musicTimer=null;
+let musicPlaying=false;
+let muted=false;
+let step=0;
+
+const melody=[
+    261.63,
+    329.63,
+    392.00,
+    523.25,
+    392.00,
+    329.63,
+    293.66,
+    349.23
+];
+
+const bass=[
+    130.81,
+    164.81,
+    196.00,
+    261.63
+];
+
+
+function setupMusic(){
+
+    if(audioContext){
+        return;
+    }
+
+    audioContext=
+        new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+    masterGain=
+        audioContext.createGain();
+
+    masterGain.gain.value=.55;
+
+    masterGain.connect(
+        audioContext.destination
+    );
+
+}
+
+
+function playNote(
+    frequency,
+    time,
+    duration,
+    volume
+){
+
+    const oscillator=
+        audioContext.createOscillator();
+
+    const gain=
+        audioContext.createGain();
+
+    oscillator.type="sine";
+
+    oscillator.frequency.value=
+        frequency;
+
+    gain.gain.setValueAtTime(
+        0,
+        time
+    );
+
+    gain.gain.linearRampToValueAtTime(
+        volume,
+        time+.03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        time+duration
+    );
+
+    oscillator.connect(gain);
+
+    gain.connect(masterGain);
+
+    oscillator.start(time);
+
+    oscillator.stop(
+        time+duration+.05
+    );
+
+}
+
+
+function musicStep(){
+
+    if(!musicPlaying){
+        return;
+    }
+
+    const now=
+        audioContext.currentTime;
+
+    const frequency=
+        melody[
+            step%melody.length
+        ];
+
+    playNote(
+        frequency,
+        now,
+        .65,
+        .065
+    );
+
+    playNote(
+        frequency/2,
+        now,
+        .9,
+        .025
+    );
+
+    if(step%4===0){
+
+        playNote(
+            bass[
+                (step/4)%bass.length
+            ],
+            now,
+            .95,
+            .035
+        );
+
+    }
+
+    step++;
+
+}
+
+
+async function toggleMusic(){
+
+    setupMusic();
+
+    if(
+        audioContext.state===
+        "suspended"
+    ){
+
+        await audioContext.resume();
+
+    }
+
+    musicPlaying=
+        !musicPlaying;
+
+    const playButton=
+        document.getElementById("play");
+
+    const disc=
+        document.getElementById("disc");
+
+    const status=
+        document.getElementById("musicStatus");
+
+
+    if(musicPlaying){
+
+        playButton.textContent=
+            "⏸ Pause";
+
+        disc.classList.remove(
+            "pause"
+        );
+
+        status.textContent=
+            "Playing • original royal celebration melody";
+
+        clearInterval(
+            musicTimer
+        );
+
+        musicStep();
+
+        musicTimer=
+            setInterval(
+                musicStep,
+                700
+            );
+
+    }else{
+
+        playButton.textContent=
+            "▶ Play";
+
+        disc.classList.add(
+            "pause"
+        );
+
+        status.textContent=
+            "Paused • tap Play whenever you like";
+
+        clearInterval(
+            musicTimer
+        );
+
+    }
+
+}
+
+
+document
+.getElementById("play")
+.onclick=
+toggleMusic;
+
+
+document
+.getElementById("mute")
+.onclick=
+function(){
+
+    muted=!muted;
+
+    if(masterGain){
+
+        masterGain.gain.value=
+            muted?
+            0:
+            Number(
+                document
+                .getElementById("volume")
+                .value
+            );
+
+    }
+
+    this.textContent=
+        muted?
+        "🔇":
+        "🔊";
+
+};
+
+
+document
+.getElementById("volume")
+.oninput=
+function(){
+
+    if(
+        masterGain &&
+        !muted
+    ){
+
+        masterGain.gain.value=
+            Number(this.value);
+
+    }
+
+};
+
+
+/* =========================================================
+ OPTIONAL MP3 SUPPORT
+========================================================= */
+
+if(CONFIG.musicFile){
+
+    const audio=
+        document.createElement("audio");
+
+    audio.src=
+        CONFIG.musicFile;
+
+    audio.loop=true;
+
+    audio.preload="metadata";
+
+    document.body.appendChild(audio);
+
+    document
+    .getElementById("play")
+    .onclick=
+    async function(){
+
+        if(audio.paused){
+
+            await audio.play();
+
+            this.textContent=
+                "⏸ Pause";
+
+            document
+            .getElementById("disc")
+            .classList
+            .remove("pause");
+
+        }else{
+
+            audio.pause();
+
+            this.textContent=
+                "▶ Play";
+
+            document
+            .getElementById("disc")
+            .classList
+            .add("pause");
+
+        }
+
+    };
+
+    document
+    .getElementById("volume")
+    .oninput=
+    function(){
+
+        audio.volume=
+            Number(this.value);
+
+    };
+
+}
+
+
+/* =========================================================
+ KEYBOARD LIGHTBOX
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key==="Escape"){
+            closeLightbox();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
